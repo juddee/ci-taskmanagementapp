@@ -16,7 +16,7 @@ if (!defined('BASEPATH'))
                 $this->CI =& get_instance();
                 
         }
-        function page_protect()
+        function protect_page()
         {      
                 
                 if(!empty(get_cookie('id')) AND !isset($this->CI->session->user_id))
