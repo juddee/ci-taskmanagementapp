@@ -97,7 +97,7 @@ class Users extends CI_Controller
     public function change_password()
     {
         // add_page_protect_library
-        $this->custom_lib->page_protect();
+        $this->custom_lib->protect_page();
         $this->load->helper('form');
         $this->load->library('form_validation');
         // set form rules
