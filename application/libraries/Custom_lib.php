@@ -16,7 +16,21 @@ if (!defined('BASEPATH'))
                 $this->CI =& get_instance();
                 
         }
-        function page_protect()
+
+        function get_last_url()
+        {
+            redirect($this->CI->session->last_url);
+        }
+
+        function set_last_url($url){
+            $newdata = array(
+                'last_url'  => base_url($url),
+                'logged_in' => TRUE
+            );
+            $this->CI->session->set_userdata($newdata);
+        }
+
+        function protect_page()
         {      
                 
                 if(!empty(get_cookie('id')) AND !isset($this->CI->session->user_id))
@@ -44,5 +58,6 @@ if (!defined('BASEPATH'))
                 }                
         }
 
+        
 
     }

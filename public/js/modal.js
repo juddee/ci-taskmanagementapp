@@ -1,11 +1,12 @@
        // modal target btn
-       const modalTarget = document.getElementById("modal-target");
+       const modalTarget = document.querySelectorAll("#modal-target");
        // get data-handler value onclick
        let triggerHandler ;
        // get modal container by data-handler
        let triggerContainer;
        // get url from data-url
        let targetUrl;
+       
        // Get the button that opens the modal
        let btnB = document.querySelectorAll("#action-handler");
        // Get the <span> element that closes the modal
@@ -35,11 +36,14 @@
        });
    
        // redirect the user
-       modalTarget.addEventListener('click', (e) => {
+       modalTarget.forEach((el)=>{
+            el.addEventListener('click', (e) => {
            
-           e.preventDefault();
-           window.location = targetUrl;
+                e.preventDefault();
+                window.location = targetUrl;
+            })
        })
+
        document.getElementById('updateBtn').addEventListener('click',function(e){
            e.preventDefault();
            window.location = targetUrl;

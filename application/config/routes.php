@@ -49,6 +49,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | Examples:	my-controller/index	-> my_controller/index
 |		my-controller/my-method	-> my_controller/my_method
 */
+$route['add-subtask'] = 'sub_tasks/create_subtask';
+$route['edit-task'] = 'tasks/edit_task';
+$route['delete-task/(:any)'] = 'tasks/delete_task/$1';
+$route['task/(:any)/(:any)'] = 'sub_tasks/get_subtasks/$1/$2';
+$route['add-task'] = 'tasks/create_task';
+$route['delete-project/(:any)'] = 'projects/delete_project/$1';
+$route['home/(:any)'] = 'projects/load_project/$1';
+$route['add-project'] = 'projects/create_project';
+$route['home'] = 'projects';
 $route['logout'] = 'users/logout_user';
 $route['change-password'] = 'users/change_password';
 $route['signup'] = 'users/add_user';

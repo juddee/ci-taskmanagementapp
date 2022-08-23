@@ -33,4 +33,15 @@ class User_models extends CI_Model
         return $query->row();
     }
 
+    function update_user($user_details)
+    {
+        $this->db->update('users', $user_details, 'id ='.$user_details['id'].'');
+        if($this->db->affected_rows()==1)
+        {
+            return true;
+        }else
+        {
+            return false;
+        }
+    }
 }

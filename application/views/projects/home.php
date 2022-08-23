@@ -28,17 +28,24 @@
 
             <!-- dashboard start here -->
             <div class="dashboard">
-                <div class="authform">
-                    <form method="post" class="flex flex-d-column ">
-                        <h2>Change Password</h2>
-                        <?php echo validation_errors(); ?>
-                        <?php echo $this->session->flashdata('msg');?>
-                        <input type="password" name="password" placeholder=" Enter current password">
-                        <input type="password" name="new_password" placeholder=" Enter new password">
-                        <input type="password" name="confirm_new_pass" placeholder=" Confirm new password">
-                        <input type="submit" class="authbtn" value="Save">
-                    </form>
-                </div>
+
+               <div class="grid modal-container task-list " id="todo" >
+                    <!-- <h1>Todo</h1> -->
+                    <?php if(empty($projects)):?>
+                        <a class="flex align-items-center justify-content-center task-card">
+                            <p class="description">No project yet</p>
+                        </a>
+                    <?php else:?>
+                        <?php foreach($projects as $project):?>
+                        <a href="<?php echo base_url('home/').$project['id'];?>" class="flex  flex-d-column task-card" style="min-height:initial;">
+                            <p class="description"><?php echo $project['name']?></p>
+                            <small><?php echo $project['created_at']?></small>
+                        </a>
+                        <?php endforeach; ?>
+                    <?php endif;?>
+
+               </div>
+
             </div>
             <!-- dashboard ends here -->
         </div>
@@ -76,4 +83,3 @@
     <script src="<?php echo base_url('public/js/pg_script.js');?>"></script>
 </body>
 </html>
-

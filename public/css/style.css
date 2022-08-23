@@ -59,28 +59,18 @@ a{
     position: fixed;
     background-color: #24242e;
     color: #e0e0f1;
-    /* width: 100vw;
-    height: 100vh; */
     width: 100%;
     height: 100%;
     padding: 7px;
     z-index: 1;
     display: none;
 }
-.main-content{
-    /* position: absolute; */
-    /* right:0; */
-    /* width: 100vw; */
-    /* width: 100%; */
-}
 header a{
-    /* color: #e0e0f1; */
     color: #24242e;
     text-decoration: none;
 }
 header{
     padding: 15px 0;
-    /* background-color: #24242e; */
     background-color: #ffff;
     border-bottom: 1px solid #24242e10;
 }
@@ -124,7 +114,6 @@ header{
 }
 .board-title p{
     font-size: 16px;
-    /* color: #e0e0f1; */
     color: #24242e;
 }
 
@@ -142,16 +131,7 @@ header{
 }
 @media(min-width:800px)
 {
-    .container{
-    
-    }
-    /* header{
-        
-        background-color: #ffff;
-    }
-    header a{
-        color: #24242e;
-    } */
+
     .addtaskBtn span{
         margin-left: 5px;
         display: inline;
@@ -165,11 +145,7 @@ header{
         flex-direction: column;
         min-height: 100vh;
     }
-    .sidebar{
-        
-        /* width: 20%; */
-        /* width:20vw ; */
-    }
+
     .main-content{
         position: absolute;
         right: 0;
@@ -365,7 +341,7 @@ header{
     z-index: 2;
     background-color: #24242e9d;
 }
-.board-form, .task-form{
+.board-form, .task-form {
     color: #fff;
     width: 300px;
     min-height: 300px;
@@ -381,18 +357,18 @@ header{
     display: none;
    
 }
-.task-form input , .board-form  input, .task-form select {
+.task-form input , .board-form  input, .edit-task-form input {
     width: 100%;
     height: 30px;
     padding: 5px;
     margin: 5px 0 18px 0;
 }
 
-.task-form div , .board-form div{
+.task-form div , .board-form div , .edit-task-form div{
     padding: 10px;
 }
 
-.task-form textarea{
+.task-form textarea , .edit-task-form textarea{
     padding: 5px;
     width: 100%;
     margin: 5px 0 18px 0;
@@ -403,7 +379,7 @@ header{
 
 
 
-#addSubTasksBtn, #subBtn{
+#addSubTasksBtn, .subBtn{
     width: 100%;
     height: 35px;
     border: none;
@@ -412,12 +388,12 @@ header{
     border-radius: 5px;
     cursor: pointer;
 }
- #subBtn{
+ .subBtn{
     color: #fff;
     background-color: #655fc3;
  }
 
-#addSubTasksBtn:hover , #subBtn:hover{
+#addSubTasksBtn:hover , .subBtn:hover{
     opacity: 0.7;
 }
 
@@ -452,7 +428,7 @@ header{
     outline: none;
     
 }
-.subtask #subBtn{
+.subtask .subBtn{
     height: 39px;
     padding: 5px;
     border-radius:0;
@@ -475,7 +451,7 @@ header{
 .sub-card i:hover{
     color: red;
 }
-#del-warning , #check-warning{
+#del-warning , #check-warning, #task-del-warning, #project-del-warning, #edit-task{
     display: none;
 }
 
@@ -586,4 +562,42 @@ header{
 }
 .gif img{
     width: 100%; height: 40%;
+}
+#flash_box{
+    position:fixed;
+    top:70px;
+    right:150px;
+    padding:15px;
+    font-weight:550;
+    background-color: #edff49;
+    z-index: 3;
+}
+#flash_box i{
+    margin:0 5px;
+    cursor: pointer;
+}
+.tasks-action a {
+    color: #e0e0f1;
+}
+.tasks-action a:hover{
+    color:red;
+}
+#edit-task > div.box{
+    top: 10px;
+}
+
+#edit-task form input[type="radio"]{
+    width: 20px;
+    margin: 0 10px;
+}
+.profIcon{
+    min-width: 30px;
+    width: auto;
+    height: 30px;
+    padding: 3px;
+    font-weight: 600;
+    color: #2c2c38;
+    background-color: #3ebbd9;
+    border-radius: 7px;
+    display: flex; justify-content: center; align-items: center;
 }
