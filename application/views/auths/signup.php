@@ -18,7 +18,7 @@
                         <input type="submit" class="authbtn" value="Signup">
                     </form>
                     <small><a href="<?= base_url('login') ?>">Already have an account yet? Click here to login</a></small>
-                    <br><small class="quidebox">Login test details use Username: Johndoe  Password: 1234 </small>
+                    <br><small class="quidebox">Login test details use Username: Johndoe@gmail.com  Password: 1234 </small>
                 </div>
             </div>
             <!-- dashboard ends here -->

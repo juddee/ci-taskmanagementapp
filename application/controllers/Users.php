@@ -9,7 +9,7 @@ class Users extends CI_Controller
             parent::__construct();
             $this->load->helper('url');
             $this->load->model('user_models');
-            $this->load->library('session');
+            $this->load->model('project_models');
             $this->load->helper('cookie');  
     }
 
@@ -17,7 +17,6 @@ class Users extends CI_Controller
     public function login_user()
     {
         $this->load->helper('form');
-        $this->load->library('session');
         $this->load->library('form_validation');
         $this->form_validation->set_rules('email', 'Email address','required');
         $this->form_validation->set_rules('password', 'Password', 'required');
@@ -38,8 +37,7 @@ class Users extends CI_Controller
                     'expire' => '86400'
                 );
                 $this->input->set_cookie($cookie);
-
-                echo "corect let's login";
+                redirect(base_url('home'));
             }else{
                 $this->session->set_flashdata('msg',  '<small class="warningbox"> Opps! Email or Password not correct </small>');
                 redirect(base_url('login'));
@@ -96,34 +94,43 @@ class Users extends CI_Controller
     // change password
     public function change_password()
     {
-        // add_page_protect_library
+        // add protect_page library
         $this->custom_lib->protect_page();
+        $data['title'] = "Dashboard";
+        $data['active_sidebar'] = 'change-password';
+        $data['user_details'] = $this->user_models->get_user_details($_SESSION['user_id']);
+        $data['projects'] = $this->project_models->get_projects();
+        // set_last_url
+        $this->custom_lib->set_last_url('change-password');
         $this->load->helper('form');
         $this->load->library('form_validation');
         // set form rules
         $this->form_validation->set_rules('password', 'Password', 'required');
         $this->form_validation->set_rules('new_password', 'New password', 'required');
-        $this->form_validation->set_rules('confirm_new_pass', 'Confirm password', 'required|matches[password]',
+        $this->form_validation->set_rules('confirm_new_pass', 'Confirm password', 'required|matches[new_password]',
         array('matches' => 'Confirm new password and new password must match.'));
         $this->form_validation->set_error_delimiters('<small class="warningbox">', '</small>');
         // if user does  fail any of the validation_rule return and show associated error
         if($this->form_validation->run() === FALSE){
-            $this->load->view('auths/change_password');
+            $this->load->view('auths/change_password' , $data);
         }else{ //else user passes all validation rule then add_user 
 
-            // check if email registered
-            $user_details = $this->user_models->get_user_details($_SESSION['user_id']);
             // check if current password correct
-            if(password_verify($this->input->post('password'),$user_details->password) === TRUE )
+            if(password_verify($this->input->post('password'),$data['user_details']->password) === TRUE )
             {
-                print_r($this->input->post());
-                // display success
-                $hmtl ='<div class="gif">
-                    <img src="'.base_url('public/')  .'assets/Checkmark.gif" alt="">
-                    <h3>Password Updated!</h3>
-                </div>';
-                $this->session->set_flashdata('msg',  $hmtl);
-                redirect(base_url('change-password'));
+                $user_details['password'] = password_hash($this->input->post('new_password'), PASSWORD_DEFAULT);
+                $user_details['id']=$_SESSION['user_id'];
+                $result = $this->user_models->update_user($user_details);
+                if($result==TRUE){
+                    // display success
+                    $hmtl ='<div class="gif">
+                        <img src="'.base_url('public/')  .'assets/Checkmark.gif" alt="">
+                        <h3>Password Updated!</h3>
+                    </div>';
+                    $this->session->set_flashdata('msg',  $hmtl);
+                    redirect(base_url('change-password'));
+                }
+
 
             }else{
                 $this->session->set_flashdata('msg',  '<small class="warningbox"> Opps! Current password not correct.</small>');
@@ -139,7 +146,10 @@ class Users extends CI_Controller
     {
         // delete cookies & session
         delete_cookie('id');
-        unset($_SESSION['user_id']);
+        unset(
+            $_SESSION['user_id'],
+            $_SESSION['last_url']);
+        
         $this->session->set_flashdata('msg',  '<small class="warningbox"> You have successfully logged out!</small>');
         redirect(base_url('login'));
         

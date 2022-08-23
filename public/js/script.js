@@ -1,13 +1,9 @@
 var toggleBtn = document.getElementById("toggleBtn");
 var menu = document.getElementById('sidebar');
 var closeBtn = document.getElementById("closeBtn");
-// var addBoard = document.getElementById("add-board");
-// var addBoardForm = document.getElementById("modal-wrapper");
 
 toggleBtn.addEventListener('click', handleToggleMenu);
 closeBtn.addEventListener('click', closeSideBar);
-// addBoard.addEventListener('click', handleToggleAddBoard);
-// addBoardForm.addEventListener('click', handlecloseModal);
 function handleToggleMenu()
 {
     menu.classList.add('d-open');
@@ -18,7 +14,11 @@ function closeSideBar()
     menu.classList.remove('d-open')
 }
 
-
+ function hideMsg()
+{
+    var box = document.getElementById("flash_box");
+    box.style.display="none";
+}
 
 // Get the button that opens the modal
 let btn = document.querySelectorAll("#modal-handler");
@@ -41,10 +41,6 @@ var overlay = document.getElementById('overlay');
 // Get the add task btn
 var addTaskBtn  = document.getElementsByClassName("addtaskBtn");
 
-// if(hr.length !=0)
-// {
-//     showTasks('todo');
-// }
 
 
 
@@ -59,7 +55,6 @@ overlay.addEventListener('click', ()=>{
     dModal.style.display ="none";
     taskForm[0].style.display ="none";
     boardForm[0].style.display ="none";
-    console.log('ss');
 });
 
 function handleModal(targetFrom)
@@ -68,54 +63,3 @@ function handleModal(targetFrom)
     dModal.style.display ="block";
     targetFrom[0].style.display ="block";
 }
-
-// btn.forEach(el => {
-//     el.addEventListener('click', (e)=> {
-//         e.preventDefault();
-//         // getAttr
-//         triggerHandler = e.target.getAttribute('data-trigger');
-//         // Get the modal
-//         showTasks(triggerHandler);
-//     })  
-// });
-
-// function showTasks(val)
-// {
-//     changeActive(val);
-//     handleToggleClass(val);
-// }
-
-// function changeActive(val)
-// {
-//     hr.forEach(el =>{
-//         if(el.classList.contains('my-hr'))
-//         {
-//             el.classList.remove('my-hr');
-//         }
-//     });
-//     hr[activeBar[val]].classList.add('my-hr');   
-// }
-
-// function handleToggleClass(val)
-// {
-//     modalContainer.forEach(el=>{
-//         if(el.classList.contains('show-task'))
-//         {
-//             el.classList.remove('show-task');
-//         }
-//     });
-    
-//     addClass(val,'show-task');
-// }
-// function removeClass(targetId,targetClass)
-// {
-//     document.getElementById(targetId).classList.remove(targetClass);
-// }
-// function addClass(targetId,targetClass)
-// {
-//     if(document.getElementById(targetId))
-//     {
-//         document.getElementById(targetId).classList.add(targetClass);
-//     }
-    
-// }
