@@ -15,7 +15,8 @@ class Projects extends CI_Controller
             $this->load->helper('cookie');  
     }
 
-    function index(){
+    function index()
+    {
         // add protect_page library
         $this->custom_lib->protect_page();
         $data['title'] = "Dashboard";
@@ -25,6 +26,7 @@ class Projects extends CI_Controller
         $this->custom_lib->set_last_url('home');
         $this->load->view("projects/home", $data);
     }
+    
     function create_project()
     {
         // form validation
@@ -60,7 +62,8 @@ class Projects extends CI_Controller
 
     }
 
-    function delete_project($id){
+    function delete_project($id)
+    {
         // get all task with project_id 
         $tasks = $this->task_models->get_tasks_model($id);
             //loop and run task delete
@@ -90,8 +93,8 @@ class Projects extends CI_Controller
         }
     }
 
-    function load_project($id){
-
+    function load_project($id)
+    {
         // add protect_page library
         $this->custom_lib->protect_page();
         $data['title'] = "Dashboard";
@@ -106,19 +109,10 @@ class Projects extends CI_Controller
         $this->load->view('projects/dashboard', $data);
     }
 
-    function load_sidebar($id=''){
-        // show_projects
-        if($id==""){
-            // get list of our project
-            $projects = $this->project_models->get_projects();
-            // set the first one as active_sidebar by default
-            return array( 'project_name'=> $projects[0]['name'], 'project_id'=> $projects[0]['id'] );
-        }else{
-
-            $project = $this->project_models->get_projects($id);
-            return array( 'project_name' => $project->name, 'project_id'=> $project->id) ;
-        }
-    
+    function load_sidebar($id='')
+    {
+        $project = $this->project_models->get_projects($id);
+        return array( 'project_name' => $project->name, 'project_id'=> $project->id) ;
     }
 
 }

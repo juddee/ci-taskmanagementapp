@@ -37,6 +37,7 @@ class Users extends CI_Controller
                     'expire' => '86400'
                 );
                 $this->input->set_cookie($cookie);
+                
                 redirect(base_url('home'));
             }else{
                 $this->session->set_flashdata('msg',  '<small class="warningbox"> Opps! Email or Password not correct </small>');
@@ -49,7 +50,6 @@ class Users extends CI_Controller
     // register user
     public function add_user()
     {
-        // add_page_protect_library
         $this->load->helper('form');
         $this->load->library('form_validation');
         // set form_validation_rules
