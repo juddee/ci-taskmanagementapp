@@ -14,25 +14,29 @@ class Sub_tasks extends CI_Controller
             $this->load->model('sub_task_models');
             $this->load->helper('cookie');  
     }
-    function delete_task($id){
+    function delete_task($id)
+    {
         $this->sub_task_models->delete_subtask_model($id);
         $this->custom_lib->get_last_url();
     }
 
-    function check_task($id){
+    function check_task($id)
+    {
         $subtask_details['status']= 1;
         // unpdate
         $this->sub_task_models->update_subtask_model($id, $subtask_details);
         $this->custom_lib->get_last_url();
     }
 
-    function uncheck_task($id){
+    function uncheck_task($id)
+    {
         $subtask_details['status']= 0;
         $this->sub_task_models->update_subtask_model($id, $subtask_details);
         $this->custom_lib->get_last_url();
     }
 
-    function create_subtask(){
+    function create_subtask()
+    {
         // set form rules
         $this->load->helper('form');
         $this->load->library('form_validation');
@@ -81,7 +85,8 @@ class Sub_tasks extends CI_Controller
         $this->load->view('tasks/task_overview', $data);
     }
 
-    function load_sidebar($id=''){
+    function load_sidebar($id='')
+    {
         // show_projects
         if($id==""){
             // get list of our project

@@ -7,7 +7,8 @@ if (!defined('BASEPATH')) {
 class Task_models extends CI_Model
 {
 
-    function update_task_model($id, $task_details){
+    function update_task_model($id, $task_details)
+    {
         $this->db->update('tasks', $task_details, 'id ='.$id.'');
         if($this->db->affected_rows()==1)
         {
@@ -18,7 +19,8 @@ class Task_models extends CI_Model
         }
     }
 
-    function delete_task_model($id){
+    function delete_task_model($id)
+    {
         // delete task form tasks tb 
         $this->db->delete('tasks', array('id'=>$id));
         // delete all sub-task under tasks
@@ -27,7 +29,8 @@ class Task_models extends CI_Model
     }
 
     // get tasks
-    function get_tasks_model($project_id, $task_id=''){
+    function get_tasks_model($project_id, $task_id='')
+    {
         if($task_id==''){
             $query = $this->db->get_where('tasks', array('project_id' => $project_id ) );
             return $query->result_array();

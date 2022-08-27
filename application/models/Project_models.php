@@ -21,7 +21,8 @@ class Project_models extends CI_Model
         }
     }
 
-    function get_projects($id=''){
+    function get_projects($id='')
+    {
         if($id==''){
             $query = $this->db->get_where('projects', array('user' => $_SESSION['user_id']));
             return $query->result_array();
@@ -32,7 +33,8 @@ class Project_models extends CI_Model
 
     }
 
-    function delete_project_model($id){
+    function delete_project_model($id)
+    {
         // delete project form project tb 
         $this->db->delete('projects', array('id'=>$id));        
         // delete all tasks  under project and subtasks under projects

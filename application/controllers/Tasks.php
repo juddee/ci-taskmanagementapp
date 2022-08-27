@@ -12,8 +12,8 @@ class Tasks extends CI_Controller
             $this->load->helper('cookie');  
     }
 
-    function edit_task(){
-        
+    function edit_task()
+    {
         // set form rules
         $this->load->helper('form');
         $this->load->library('form_validation');
@@ -53,7 +53,8 @@ class Tasks extends CI_Controller
         }
     }
 
-    function delete_task($id){
+    function delete_task($id)
+    {
         $respond = $this->task_models->delete_task_model($id);
         // display success
         $hmtl ='<div class="gif">
@@ -97,7 +98,8 @@ class Tasks extends CI_Controller
         }
     }
 
-    function check_task_title(){
+    function check_task_title()
+    {
         $result = $this->task_models->is_unique_model($this->input->post('project'),$this->input->post('title'));
         // if project name don't already exist with user_id
         if(empty($result)){
