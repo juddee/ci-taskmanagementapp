@@ -129,6 +129,9 @@ class Users extends CI_Controller
                     </div>';
                     $this->session->set_flashdata('msg',  $hmtl);
                     redirect(base_url('change-password'));
+                }else{
+                    
+                    redirect(base_url('change-password'));
                 }
 
 
