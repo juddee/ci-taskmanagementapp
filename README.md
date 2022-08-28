@@ -17,3 +17,5 @@ It allows authenticated user:
 ![This is an image](public/assets/screens/img2.png)
 ![This is an image](public/assets/screens/img3.png)
 ![This is an image](public/assets/screens/img4.png)
+![This is an image](public/assets/screens/img5.png)
+![This is an image](public/assets/screens/img6.png)
