@@ -1,5 +1,5 @@
 # ci-taskmanagementapp 
-### [View](http://anodertask-app.herokuapp.com/)
+### [Live](#)
 CodeIgniter powered task management application
 
 ## AnoderTask App Overview
